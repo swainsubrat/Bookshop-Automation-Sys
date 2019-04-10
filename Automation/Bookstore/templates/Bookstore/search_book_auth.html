@@ -1,0 +1,86 @@
+{% extends 'base_layout.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block otherlinks %}
+<link rel="icon" href="{% static "img/favicon.png" %}" type="image/png">
+<link rel="shortcut icon" href="{% static "img/favicon.ico" %}" type="img/x-icon">
+{% endblock %}
+
+{% block title %}
+	Search Book (By Author)
+{% endblock %}
+
+{% block content %}
+
+<nav class="main-nav-outer" id="test">
+    <!--main-nav-start-->
+    <div class="container">
+      <ul class="main-nav">
+        <li><a href="{% url 'home' %}">About Us</a></li>
+        <li><a href="{% url 'addbook' %}">Add Book</a></li>
+        <li><a href="{% url 'search_book_name' %}">Search Name</a></li>
+      <!--	<li><a href="#Portfolio">Portfolio</a></li>-->
+        <li class="small-logo"><a href="{% url 'home' %}"><img src="{% static "img/small-logo.png" %}" alt=""></a></li>
+        <li><a href="{% url 'search_book_author' %}">Search Author</a></li>
+        <li><a href="{% url 'analytics' %}">Analytics</a></li>
+        <li><a href="{% url 'cart' 0 %}"><i class="fa fa-shopping-cart fa-2x"></i></a></li>
+      </ul>
+      <a class="res-nav_click" href="#"><i class="fa fa-bars"></i></a>
+    </div>
+</nav>
+<br>
+</br>
+</br>
+    <div align="center">
+        <div style="width:50%;">
+            <h1>SEARCH BOOKS By Author</h1>
+        <br>
+        </br>
+            <form method="POST"> 
+                {% csrf_token %}
+                <div>
+                    <div class="form-group col-6">{{ form.author_name }}</div>
+                    <input class="btn btn-success" type="submit" value="SEARCH">
+                </div>
+            </form>
+        </div>
+    </div>
+    </br>
+    </br>
+    <br>   
+    {% if data %}
+    <div style="width:92%; margin-left: 4%; margin-right: 4%" class="animated fadeInUp delay-01s">
+        <table class="table table-dark" >
+            <thead>
+                <tr>
+                    <th scope="col">#ID</th>
+                    <th scope="col">Book Name</th>
+                    <th scope="col">Category</th>
+                    <th scope="col">Publication</th>
+                    <th scope="col">Author</th>
+                    <th scope="col">Shelf No</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Add to cart</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for instance in data %}
+                <tr>
+                    <td>{{ instance.id }}</td>
+                    <td>{{ instance.book_name }}</td>
+                    <td>{{ instance.book_cat }}</td>
+                    <td>{{ instance.book_pub }}</td>
+                    <td>{{ instance.book_auth }}</td>
+                    <td>{{ instance.shelf_no }}</td>
+                    <td>{{ instance.book_price }}</td>
+                    <td>{{ instance.book_qty }}</td>
+                    <td><a href="{% url 'cart' instance.id %}" class="btn btn-secondary" >Add to cart</a></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+            {% endif %}
+        </table>
+    </div>
+{% endblock %}

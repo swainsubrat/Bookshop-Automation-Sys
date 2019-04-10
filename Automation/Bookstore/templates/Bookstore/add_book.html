@@ -1,0 +1,58 @@
+{% extends 'base_layout.html' %}
+{%  load static %}
+  
+{% block otherlinks %}
+<link rel="icon" href="{% static "img/favicon.png" %}" type="image/png">
+<link rel="shortcut icon" href="{% static "img/favicon.ico" %}" type="img/x-icon">
+{% endblock %}
+
+{% block title %}
+	Add Books
+{% endblock %}
+
+{% block content %}
+
+<nav class="main-nav-outer" id="test">
+    <!--main-nav-start-->
+    <div class="container">
+      <ul class="main-nav">
+        <li><a href="{% url 'home' %}">About Us</a></li>
+        <li><a href="{% url 'addbook' %}">Add Book</a></li>
+        <li><a href="{% url 'search_book_name' %}">Search Name</a></li>
+      <!--	<li><a href="#Portfolio">Portfolio</a></li>-->
+        <li class="small-logo"><a href="{% url 'home' %}"><img src="{% static "img/small-logo.png" %}" alt=""></a></li>
+        <li><a href="{% url 'search_book_author' %}">Search Author</a></li>
+        <li><a href="{% url 'analytics' %}">Analytics</a></li>
+        <li><a href="{% url 'cart' 0 %}"><i class="fa fa-shopping-cart fa-2x"></i></a></li>
+      </ul>
+      <a class="res-nav_click" href="#"><i class="fa fa-bars"></i></a>
+    </div>
+  </nav>
+
+
+</br>
+</br>
+    <div align="center">
+        <div style="width:65%;">
+            <h1 class="animated fadeInDown delay-03s">ADD BOOKS</h1>
+        </br>
+            <form method="POST"> 
+                {% csrf_token %}
+                <div class="form-row animated fadeInUp delay-03s">
+                    <div class="form-group col-6">{{ form.book_name}}</div>
+                    <div class="form-group col-6">{{ form.book_cat}}</div>
+                </div>
+                <div class="form-row animated fadeInUp delay-03s">
+                    <div class="form-group col-6">{{ form.book_auth}}</div>
+                    <div class="form-group col-6">{{ form.book_pub}}</div>
+                </div>
+                <div class="form-row animated fadeInUp delay-03s">
+                    <div class="form-group col-6">{{ form.book_price}}</div>
+                    <div class="form-group col-6">{{ form.book_qty}}</div>
+                </div>
+                <input class="btn btn-success animated fadeInUp delay-06s" type="submit" value="ADD">
+            </form>
+        </div>
+    </div>
+    {{ data }}
+{% endblock %}

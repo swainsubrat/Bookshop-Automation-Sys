@@ -1,0 +1,24 @@
+Book shop automation system (BAS):
+
+1..BAS should help the customers query whether a book in a stock the user can query the
+availability of a book either by using the book title or by using the name of author.
+
+2..The customer can also provide his e-mail address and mobile, so that he can be intimated
+automatically by the software as and when the book copy received.
+
+3..If a book in stock, the exact number of copies available and the rack number in which the
+book is located should be displayed.
+
+4..As soon as customer selects his book for purchase,BAS should update the stock and generate the sales receipt for the
+book.
+ 
+5..BAS should allow employees to update inventory whenever new supply arrives. Also
+upon request by the owner of book shop.
+
+6..BAS should generate sales statistics (viz, book name, publisher, ISBN number, number
+of copies sold and the sales revenue) for any period.
+
+
+
+work
+Home-page :- photos,link,description

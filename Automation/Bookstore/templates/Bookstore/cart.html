@@ -1,0 +1,79 @@
+{% extends 'base_layout.html' %}
+{% load static %}
+
+{% block otherlinks %}
+<link rel="icon" href="{% static "img/favicon.png" %}" type="image/png">
+<link rel="shortcut icon" href="{% static "img/favicon.ico" %}" type="img/x-icon">
+{% endblock %}
+
+{% block title %}
+	Cart
+{% endblock %}
+
+{% block content %}
+
+<nav class="main-nav-outer" id="test">
+    <!--main-nav-start-->
+    <div class="container">
+      <ul class="main-nav">
+        <li><a href="{% url 'home' %}">About Us</a></li>
+        <li><a href="{% url 'addbook' %}">Add Book</a></li>
+        <li><a href="{% url 'search_book_name' %}">Search Name</a></li>
+      <!--	<li><a href="#Portfolio">Portfolio</a></li>-->
+        <li class="small-logo"><a href="{% url 'home' %}"><img src="{% static "img/small-logo.png" %}" alt=""></a></li>
+        <li><a href="{% url 'search_book_author' %}">Search Author</a></li>
+        <li><a href="{% url 'analytics' %}">Analytics</a></li>
+        <li><a href="{% url 'cart' 0 %}"><i class="fa fa-shopping-cart fa-2x"></i></a></li>
+      </ul>
+      <a class="res-nav_click" href="#"><i class="fa fa-bars"></i></a>
+    </div>
+  </nav>
+  {% if data %}
+    <h1 style="text-align: center">Your Orders</h1>
+    <br>
+    <br>
+    <div style="width:70%; margin-left: 15%; margin-right: 15%">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#ID</th>
+            <th scope="col">Book Name</th>
+            <th scope="col">Nos of Copies</th>
+            <th scope="col">Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>{{ data.book_name }}</td>
+            <td>1</td>
+            <td>{{ data.book_price }}</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td>Discounts</td>
+            <td>+  0.00%</td>
+          </tr>
+          <tr>
+              <td></td>
+              <td></td>
+              <td>Total</td>
+              <td>{{data.book_price}}</td>
+          </tr>
+        </tbody>
+      </table> <br><br>
+      <input class="btn btn-success" type="submit" value="Proceed to Cheakout >>"> 
+    </div>
+</div>
+{% endif %}
+{% if not data %}
+<div align="center">
+    <div style="width:95%; padding: 25ex;">
+        <h1>0 items in cart</h1>
+        <h1>Please select some item first</h1><br>
+        <a href="{% url 'search_book_name' %}" class="btn btn-success" >Search Books</a>
+    </div>
+</div>
+{% endif %}
+{% endblock %}

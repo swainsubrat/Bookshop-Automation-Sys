@@ -1,0 +1,37 @@
+{% extends 'base_layout.html' %}
+{% load static %}
+
+{% block otherlinks %}
+<link rel="icon" href="{% static "img/favicon.png" %}" type="image/png">
+<link rel="shortcut icon" href="{% static "img/favicon.ico" %}" type="img/x-icon">
+{% endblock %}
+
+{% block title %}
+	Analytics
+{% endblock %}
+
+{% block content %}
+
+<nav class="main-nav-outer" id="test">
+    <!--main-nav-start-->
+    <div class="container">
+      <ul class="main-nav">
+        <li><a href="{% url 'home' %}">About Us</a></li>
+        <li><a href="{% url 'addbook' %}">Add Book</a></li>
+        <li><a href="{% url 'search_book_name' %}">Search Name</a></li>
+      <!--	<li><a href="#Portfolio">Portfolio</a></li>-->
+        <li class="small-logo"><a href="{% url 'home' %}"><img src="{% static "img/small-logo.png" %}" alt=""></a></li>
+        <li><a href="{% url 'search_book_author' %}">Search Author</a></li>
+        <li><a href="{% url 'analytics' %}">Analytics</a></li>
+        <li><a href="{% url 'cart' 0 %}"><i class="fa fa-shopping-cart fa-2x"></i></a></li>
+      </ul>
+      <a class="res-nav_click" href="#"><i class="fa fa-bars"></i></a>
+    </div>
+  </nav>
+
+<div align="center">
+    <div style="width:95%; padding: 35ex;">
+        <h1>Coming soon...</h1>
+    </div>
+</div>
+{% endblock %}
